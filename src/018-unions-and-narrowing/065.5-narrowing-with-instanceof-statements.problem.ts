@@ -9,9 +9,11 @@ const somethingDangerous = () => {
 try {
   somethingDangerous();
 } catch (error) {
-  // How do we change this code to make it
-  // not show a red squiggly?
-  if (true) {
+  // Narrow the error using the instanceof operator
+  // Basically check if the error is an instance of the Error class
+  if (error instanceof Error) {
     console.error(error.message);
+  } else {
+    throw error;
   }
 }
