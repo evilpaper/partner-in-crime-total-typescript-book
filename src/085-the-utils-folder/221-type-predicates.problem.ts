@@ -1,7 +1,7 @@
 import { Equal, Expect } from "@total-typescript/helpers";
 import { describe, expect, it } from "vitest";
 
-const hasDataAndId = (value: unknown) => {
+const hasDataId = (value: unknown): value is { data: { id: string } } => {
   return (
     typeof value === "object" &&
     value !== null &&
@@ -14,7 +14,7 @@ const hasDataAndId = (value: unknown) => {
 };
 
 const parseValue = (value: unknown) => {
-  if (hasDataAndId(value)) {
+  if (hasDataId(value)) {
     return value.data.id;
   }
 
@@ -22,7 +22,7 @@ const parseValue = (value: unknown) => {
 };
 
 const parseValueAgain = (value: unknown) => {
-  if (hasDataAndId(value)) {
+  if (hasDataId(value)) {
     return value.data.id;
   }
 
